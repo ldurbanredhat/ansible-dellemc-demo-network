@@ -9,7 +9,10 @@
     - name: Create a VLAN
       os10_config:
         backup: yes
-        lines:
-          - vlan "{{ vlan_id }}"
-          - name "{{ vlan_name }}"
+        # lines:
+        #   - vlan "{{ vlan_id }}"
+        #   - name "{{ vlan_name }}"        
+          - vlan 13
+          - name "Sales"
+
       when: ansible_network_os == 'dellemc.os10.os10'
