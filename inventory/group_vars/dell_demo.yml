@@ -1,0 +1,23 @@
+---
+# ansible_ssh_user: admin
+# ansible_ssh_pass: force10
+ansible_become: yes
+ansible_connection: ansible.netcommon.network_cli
+ansible_network_os: dellemc.os10.os10
+
+# Create vlans
+os10_vlan:
+    vlan 144:
+      description: "PRODUCTION"
+      state: present
+    vlan 145:
+      description: "DATA"
+      state: present
+    vlan 148:
+      description: "GUEST"
+      state: absent
+    vlan 150:
+      description: "VOICE"
+      state: present
+
+

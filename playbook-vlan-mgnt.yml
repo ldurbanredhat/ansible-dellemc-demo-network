@@ -1,0 +1,9 @@
+---
+- name: Switch VLAN Management
+  hosts: dell_demo
+  connection: network_cli
+  collections:
+    - dellemc.os10
+  roles:
+    - os10_vlan
+  when: ansible_network_os == 'dellemc.os10.os10'

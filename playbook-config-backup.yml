@@ -1,0 +1,14 @@
+---
+- name: Dell Switch Config Backup Demo
+  hosts: dell_demo
+  connection: network_cli
+
+  tasks:
+    - name: Backup current switch config (dellos10)
+      os10_config:
+        backup: yes
+        backup_options:
+          filename: backup-cfg-"{{ inventory_hostname }}"
+          dir_path: 
+      register: backup_dellos10_location
+      when: ansible_network_os == 'dellemc.os10.os10'

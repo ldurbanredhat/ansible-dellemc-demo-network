@@ -1,0 +1,15 @@
+---
+- name: Dell VLAN Management Demo
+  hosts: z9100-01
+  connection: network_cli
+  collections:
+    - dellemc.os10.os10_vlan
+
+  tasks:
+    - name: Create a VLAN
+      os10_config:
+        backup: yes
+        lines:
+          - vlan "{{ vlan_id }}"
+          - name "{{ vlan_name }}"
+      when: ansible_network_os == 'dellemc.os10.os10'

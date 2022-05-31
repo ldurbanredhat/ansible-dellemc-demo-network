@@ -1,0 +1,6 @@
+---
+ - name: "Provisioning VLAN configuration for os10"
+   os10_config:
+      src: os10_vlan.j2
+   when: (ansible_network_os is defined and ansible_network_os == "dellemc.os10.os10")
+   register: output
