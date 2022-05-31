@@ -2,8 +2,8 @@
 - name: Dell VLAN Management Demo
   hosts: z9100-01
   gather_facts: false
-  #connection: network_cli
-  connection: httpapi
+  connection: network_cli
+  #connection: httpapi
   collections:
     #- dellemc.os10.os10_config
     - dellemc.enterprise_sonic.sonic_vlans
