@@ -1,20 +1,52 @@
 ---
 - name: Dell VLAN Management Demo
   hosts: z9100-01
-  #gather_facts: false
+  gather_facts: false
   connection: network_cli
   collections:
-    - dellemc.os10.os10_config
+    #- dellemc.os10.os10_config
+    - dellemc.enterprise_sonic.sonic_vlans
 
   tasks:
     - name: Create a VLAN
-      os10_config:
-        backup: yes
-        lines:
-        #   - vlan "{{ vlan_id }}"
-        #   - name "{{ vlan_name }}"        
-          - vlan 13
-          - name "Sales"
-          - exit
+      dellemc.enterprise_sonic.sonic_vlans:
+        config:
+          - vlan_id: 10
+          - vlan_id: 11
+          - vlan_id: 112
+        state: merged
+      register: sonic_vlans
 
-      when: ansible_network_os == 'dellemc.os10.os10'
+    # - name: Delete VLAN
+    #   dellemc.enterprise_sonic.sonic_vlans:
+    #     config:
+    #       - vlan_id: 10
+    #       - vlan_id: 11
+    #       - vlan_id: 112
+    #     state: merged
+    #   register: sonic_vlans
+
+
+    # - name: Configure Layer 2 Interfaces
+    #   dellemc.enterprise_sonic.sonic_l2_interfaces:
+    #     config:
+    #       - name: Eth1/2
+    #         access:
+    #           vlan: 10
+    #         trunk:
+    #           allowed_vlans:
+    #             - vlan_id: 10
+    #             - vlan_id: 11
+    #       state: merged
+
+
+      # os10_config:
+      #   backup: yes
+      #   lines:
+      #   #   - vlan "{{ vlan_id }}"
+      #   #   - name "{{ vlan_name }}"        
+      #     - vlan 13
+      #     - name "Sales"
+      #     - exit
+
+      # when: ansible_network_os == 'dellemc.os10.os10'
