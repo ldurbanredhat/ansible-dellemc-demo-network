@@ -3,7 +3,7 @@
   hosts: z9100-01
   connection: network_cli
   collections:
-    - dellemc.os10.os10_vlan
+    - dellemc.os10.os10_config
 
   tasks:
     - name: Create a VLAN
