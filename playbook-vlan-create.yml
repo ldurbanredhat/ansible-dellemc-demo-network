@@ -1,6 +1,7 @@
 ---
 - name: Dell VLAN Management Demo
   hosts: z9100-01
+  gather_facts: false
   connection: network_cli
   collections:
     - dellemc.os10.os10_config
@@ -9,7 +10,7 @@
     - name: Create a VLAN
       os10_config:
         backup: yes
-        # lines:
+        lines:
         #   - vlan "{{ vlan_id }}"
         #   - name "{{ vlan_name }}"        
           - vlan 13
