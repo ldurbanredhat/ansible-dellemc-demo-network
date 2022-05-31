@@ -15,5 +15,6 @@
         #   - name "{{ vlan_name }}"        
           - vlan 13
           - name "Sales"
+          - exit
 
       when: ansible_network_os == 'dellemc.os10.os10'
