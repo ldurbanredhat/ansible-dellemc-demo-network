@@ -8,16 +8,7 @@
     - dellemc.enterprise_sonic.sonic_vlans
 
   tasks:
-    # - name: Create a VLAN
-    #   dellemc.enterprise_sonic.sonic_vlans:
-    #     config:
-    #       - vlan_id: 10
-    #       - vlan_id: 11
-    #       - vlan_id: 112
-    #     state: merged
-    #   register: sonic_vlans
-
-    - name: Delete VLAN
+     - name: Delete VLAN
       dellemc.enterprise_sonic.sonic_vlans:
         config:
           - vlan_id: 10
