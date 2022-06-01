@@ -13,5 +13,4 @@
         backup: yes
           backup_options:
             dir_path: /opt/sonic_backups
-            filename: backup-cfg-"{{inventory_hostname}}"
-
+            filename: backup-cfg-"{{inventory_host
